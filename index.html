@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okinawa & Us | 冬日漫遊</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Sacramento&family=Fredoka:wght@500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        /* --- 1. 基礎設定與配色 --- */
+        :root {
+            --primary-blue: #8FB8CA;
+            --soft-cream: #FDFBF7;
+            --text-dark: #555555;
+            --accent-pink: #F4C2C2;
+            --card-bg: #ffffff;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif; 
+            background-color: var(--soft-cream);
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3 { color: var(--primary-blue); font-weight: 700; }
+
+        /* --- 2. Hero Section --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=2070&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            /* 這裡改成了 Sacramento 字體 */
+            font-family: 'Sacramento', cursive; 
+            font-size: 6rem; /* 這個字體比較細，所以要大一點才好看 */
+            margin-bottom: 0px;
+            color: #fff;
+            line-height: 1.2;
+            font-weight: 400;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 35px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        .countdown-box {
+            display: flex;
+            gap: 25px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(8px);
+            padding: 25px 50px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .time-unit span.number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .time-unit span.label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: #f0f0f0;
+        }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 40px;
+            animation: bounce 2s infinite;
+            opacity: 0.9;
+            color: #fff;
+        }
+
+        /* --- 3. 行程卡片區塊 --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 70px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-pink);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(143, 184, 202, 0.1);
+            border-left: 6px solid var(--primary-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover { transform: translateY(-5px); }
+
+        .day-tag {
+            background: var(--primary-blue);
+            color: #fff;
+            padding: 6px 18px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .timeline-item h3 { font-size: 1.4rem; margin-bottom: 10px; color: #333; }
+        .timeline-item p { margin-bottom: 15px; color: #666; }
+
+        .food-list {
+            background-color: #F0F7FA;
+            padding: 15px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+        .food-list i { color: var(--accent-pink); margin-right: 5px; }
+
+        .location {
+            color: #999;
+            font-size: 0.85rem;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .coupon {
+            background: linear-gradient(135deg, #FFF5F7 0%, #FFEAEF 100%);
+            border: 2px dashed var(--accent-pink);
+            padding: 35px;
+            text-align: center;
+            border-radius: 20px;
+            margin-top: 40px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .coupon:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(244, 194, 194, 0.3);
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            color: #aaa;
+            font-size: 0.85rem;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 4rem; } /* 手機版字體調整 */
+            .timeline-item { padding: 20px; }
+            .countdown-box { padding: 15px 25px; gap: 15px; }
+            .time-unit span.number { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <h1>Okinawa & Us</h1>
+        <p>冬天去海邊，和喜歡的人。</p>
+        
+        <div class="countdown-box">
+            <div class="time-unit">
+                <span class="number" id="days">00</span>
+                <span class="label">Days</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="hours">00</span>
+                <span class="label">Hrs</span>
+            </div>
+            <div class="time-unit">
+                <span class="number" id="minutes">00</span>
+                <span class="label">Mins</span>
+            </div>
+        </div>
+        
+        <div class="scroll-down">
+            <i class="fas fa-chevron-down fa-2x"></i>
+        </div>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title">我們的 5 天 4 夜</h2>
+
+        <div class="timeline-item">
+            <span class="day-tag">Day 1 | 降落 & 國際通</span>
+            <h3>✈️ 抵達與第一口沖繩味</h3>
+            <p>下飛機後先去取車。第一站直奔系滿魚市場吃海鮮，下午 Check-in 後去國際通逛逛，晚上一定要去「屋台村」感受氣氛！</p>
+            <div class="food-list">
+                <div><i class="fas fa-utensils"></i> 必吃：<b>豬肉蛋飯糰 (Pork Tamago)</b> - 機場店排隊太長就去市區吃</div>
+                <div style="margin-top:5px"><i class="fas fa-utensils"></i> 晚餐：<b>國際通屋台村</b> - 隨便挑一間居酒屋</div>
+            </div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> 那霸市區</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="day-tag">Day 2 | 北部看海</span>
+            <h3>🐋 湛藍的美麗海水族館</h3>
+            <p>一路向北開！早上先去水族館看巨大的鯨鯊，然後去古宇利島看海。冬天風大，我們可以在「心形岩」拍張照就躲進海景咖啡廳。</p>
+            <div class="food-list">
+                <div><i class="fas fa-utensils"></i> 午餐：<b>蝦蝦飯 (Shrimp Wagon)</b> - 古宇利島必吃</div>
+                <div style="margin-top:5px"><i class="fas fa-utensils"></i> 晚餐：<b>百年古家 大家</b> - 氣氛超好的阿古豬火鍋</div>
+            </div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> 本部町 / 今歸仁村</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="day-tag">Day 3 | 美國村 vibe</span>
+            <h3>🎡 像電影場景的美國村</h3>
+            <p>睡飽一點再出發。中午去美國村，這裡每一面牆都超好拍。找一間海邊咖啡廳看夕陽，晚上這裡的燈光超級浪漫。</p>
+            <div class="food-list">
+                <div><i class="fas fa-coffee"></i> 下午茶：<b>Zhyvago Coffee Works</b> - 海邊工業風咖啡</div>
+                <div style="margin-top:5px"><i class="fas fa-utensils"></i> 晚餐：<b>Blue Ocean Steak</b> 或 <b>A&W 漢堡</b></div>
+            </div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> 北谷町 (美國村)</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="day-tag">Day 4 | 瀨長島 & 購物</span>
+            <h3>🥞 純白的瀨長島與 Outlet</h3>
+            <p>號稱沖繩小希臘的「瀨長島」，全白的建築配海景。吃完舒芙蕾鬆餅後，去 Ashibinaa Outlet 爆買一波。</p>
+            <div class="food-list">
+                <div><i class="fas fa-utensils"></i> 甜點：<b>幸福鬆餅 (A Happy Pancake)</b> - 記得先預約！</div>
+                <div style="margin-top:5px"><i class="fas fa-shopping-bag"></i> 購物：<b>Ashibinaa Outlet</b> 或 <b>Parco City</b></div>
+            </div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> 豐見城市 / 浦添市</div>
+        </div>
+
+        <div class="timeline-item">
+            <span class="day-tag">Day 5 | 最後的悠閒</span>
+            <h3>🐈 奧武島擼貓 & 回家</h3>
+            <p>最後一天如果不趕時間，去南部的「奧武島」吃天婦羅，那裡有很多可愛的貓咪。還車前去超市買最後一波零食！</p>
+            <div class="food-list">
+                <div><i class="fas fa-utensils"></i> 小吃：<b>中本鮮魚天婦羅店</b></div>
+                <div style="margin-top:5px"><i class="fas fa-ice-cream"></i> 甜點：<b>Blue Seal 冰淇淋</b> - 臨走前再吃一支</div>
+            </div>
+            <div class="location"><i class="fas fa-map-marker-alt"></i> 南城市 -> 機場</div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 80px;">Travel Kit</h2>
+        
+        <div class="timeline-item">
+            <h3>🎒 冬季沖繩穿搭 & 提醒</h3>
+            <ul style="list-style: none; margin-top: 15px; padding-left: 5px;">
+                <li style="margin-bottom:8px"><i class="fas fa-check" style="color:var(--primary-blue)"></i> <b>洋蔥式穿搭：</b> 白天20度很暖，早晚海風吹頭會痛，一定要帶防風外套/帽子。</li>
+                <li style="margin-bottom:8px"><i class="fas fa-check" style="color:var(--primary-blue)"></i> <b>自駕注意：</b> 記得帶台灣駕照 + 日文譯本。</li>
+                <li style="margin-bottom:8px"><i class="fas fa-check" style="color:var(--primary-blue)"></i> <b>保濕：</b> 雖然是海島，但冬天其實滿乾的。</li>
+            </ul>
+        </div>
+
+        <div class="coupon" onclick="alert('和好成功！立刻牽手 30 秒 ❤️')">
+            <i class="fas fa-heart" style="color: var(--accent-pink); font-size: 2.5rem; margin-bottom:10px;"></i>
+            <h3>無限期和好券</h3>
+            <p>旅行中難免有小摩擦，點擊這張券，我們可以無條件原諒對方一次。</p>
+            <small style="color:#999">(點擊兌換)</small>
+        </div>
+    </div>
+
+    <footer>
+        <p>Can't wait to see the blue with you. <br> 2026 Jan.</p>
+    </footer>
+
+    <script>
+        // *** 請在這裡修改出發日期 ***
+        const tripDate = new Date("2026-01-15T00:00:00").getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = tripDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+            document.getElementById("days").innerText = days < 10 ? "0" + days : days;
+            document.getElementById("hours").innerText = hours < 10 ? "0" + hours : hours;
+            document.getElementById("minutes").innerText = minutes < 10 ? "0" + minutes : minutes;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.querySelector(".countdown-box").innerHTML = "<h2 style='color:#fff'>我們在沖繩啦！🏖️</h2>";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
