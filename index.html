@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Okinawa & Us | 冬日漫遊</title>
+    <title>Okinawa & Us | 冬日食旅完全手冊</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Sacramento&family=Fredoka:wght@500&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Sacramento&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        /* --- 1. 基礎設定與配色 --- */
         :root {
-            --primary-blue: #8FB8CA;
+            --primary-blue: #6A8EAE; 
+            --secondary-blue: #A4C3D2;
             --soft-cream: #FDFBF7;
-            --text-dark: #555555;
-            --accent-pink: #F4C2C2;
+            --text-dark: #444;
+            --accent-pink: #E8Aeb7;
             --card-bg: #ffffff;
+            --backup-bg: #F2F2F2;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -25,15 +25,15 @@
             font-family: 'Zen Maru Gothic', sans-serif; 
             background-color: var(--soft-cream);
             color: var(--text-dark);
-            line-height: 1.7;
+            line-height: 1.6;
         }
 
         h1, h2, h3 { color: var(--primary-blue); font-weight: 700; }
-
-        /* --- 2. Hero Section --- */
+        
+        /* --- Hero Section --- */
         .hero {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.15), rgba(0,0,0,0.15)), url('https://images.unsplash.com/photo-1542640244-7e672d6cef4e?q=80&w=2070&auto=format&fit=crop');
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1596520367623-28c03531b28d?q=80&w=2072&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -42,166 +42,215 @@
             align-items: center;
             text-align: center;
             color: #fff;
-            position: relative;
-            text-shadow: 1px 1px 8px rgba(0,0,0,0.3);
+            text-shadow: 1px 1px 8px rgba(0,0,0,0.4);
         }
 
         .hero h1 {
-            /* 這裡改成了 Sacramento 字體 */
             font-family: 'Sacramento', cursive; 
-            font-size: 6rem; /* 這個字體比較細，所以要大一點才好看 */
-            margin-bottom: 0px;
+            font-size: 5rem;
             color: #fff;
+            margin-bottom: 0;
             line-height: 1.2;
-            font-weight: 400;
         }
 
         .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 35px;
-            font-weight: bold;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             letter-spacing: 2px;
-            opacity: 0.9;
+            font-weight: bold;
         }
 
         .countdown-box {
             display: flex;
-            gap: 25px;
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(8px);
-            padding: 25px 50px;
+            gap: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        .time-unit {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .time-unit span.number { font-size: 2rem; font-weight: 700; color: #fff; }
+        .time-unit span.label { font-size: 0.8rem; text-transform: uppercase; color: #eee; }
 
-        .time-unit span.number {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .time-unit span.label {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            color: #f0f0f0;
-        }
-
-        .scroll-down {
-            position: absolute;
-            bottom: 40px;
-            animation: bounce 2s infinite;
-            opacity: 0.9;
-            color: #fff;
-        }
-
-        /* --- 3. 行程卡片區塊 --- */
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 70px 20px;
-        }
+        /* --- Container --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 60px 20px; }
 
         .section-title {
             text-align: center;
-            font-size: 2.2rem;
-            margin-bottom: 50px;
+            font-size: 2rem;
+            margin-bottom: 40px;
             position: relative;
+            color: var(--text-dark);
         }
-        
         .section-title::after {
             content: '';
             display: block;
-            width: 60px;
-            height: 4px;
+            width: 50px;
+            height: 3px;
             background: var(--accent-pink);
-            margin: 15px auto 0;
-            border-radius: 2px;
+            margin: 10px auto 0;
         }
 
+        /* --- Car Rental Info Box --- */
+        .info-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            border-left: 5px solid var(--accent-pink);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        .info-card h3 { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .info-item h4 { font-size: 1rem; color: #666; margin-bottom: 5px; }
+        .info-item p { font-size: 0.95rem; }
+
+        /* --- Timeline Item --- */
         .timeline-item {
             background: var(--card-bg);
             border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(143, 184, 202, 0.1);
-            border-left: 6px solid var(--primary-blue);
-            transition: transform 0.3s ease;
+            padding: 0;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(106, 142, 174, 0.1);
+            overflow: hidden;
+            position: relative;
         }
 
-        .timeline-item:hover { transform: translateY(-5px); }
-
-        .day-tag {
+        .day-header {
             background: var(--primary-blue);
             color: #fff;
-            padding: 6px 18px;
-            border-radius: 50px;
-            font-size: 0.95rem;
+            padding: 15px 25px;
             font-weight: bold;
-            display: inline-block;
-            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .timeline-item h3 { font-size: 1.4rem; margin-bottom: 10px; color: #333; }
-        .timeline-item p { margin-bottom: 15px; color: #666; }
+        .day-content { padding: 25px; }
 
-        .food-list {
-            background-color: #F0F7FA;
-            padding: 15px;
-            border-radius: 12px;
-            font-size: 0.9rem;
+        .stop-item {
+            border-bottom: 1px dashed #ddd;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .stop-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+        .stop-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .stop-title i { color: var(--primary-blue); font-size: 1.1rem; }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+        .tag {
+            font-size: 0.8rem;
+            padding: 4px 10px;
+            border-radius: 5px;
+            background: #f0f7fa;
             color: #555;
-        }
-        .food-list i { color: var(--accent-pink); margin-right: 5px; }
-
-        .location {
-            color: #999;
-            font-size: 0.85rem;
-            margin-top: 15px;
             display: flex;
             align-items: center;
             gap: 5px;
         }
+        .tag i { color: var(--primary-blue); }
 
+        .desc { margin-bottom: 10px; color: #555; font-size: 0.95rem; }
+        
+        .tip-box {
+            background: #FFFDF0;
+            border: 1px solid #FFEBA5;
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            color: #8a6d3b;
+            margin-bottom: 10px;
+        }
+
+        .backup-plan {
+            background: var(--backup-bg);
+            padding: 15px 20px;
+            border-top: 1px solid #ddd;
+            font-size: 0.9rem;
+            color: #666;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+        .backup-icon {
+            background: #999;
+            color: #fff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        /* --- 吵架和好券 (Coupon) 樣式 --- */
+        .coupon-section {
+            margin-top: 60px;
+            text-align: center;
+        }
         .coupon {
             background: linear-gradient(135deg, #FFF5F7 0%, #FFEAEF 100%);
-            border: 2px dashed var(--accent-pink);
-            padding: 35px;
-            text-align: center;
+            border: 3px dashed var(--accent-pink);
+            padding: 40px;
             border-radius: 20px;
-            margin-top: 40px;
+            display: inline-block;
+            width: 100%;
             cursor: pointer;
-            transition: 0.3s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
         }
         .coupon:hover {
             transform: scale(1.02);
-            box-shadow: 0 10px 25px rgba(244, 194, 194, 0.3);
+            box-shadow: 0 10px 25px rgba(232, 174, 183, 0.4);
+        }
+        .coupon:active {
+            transform: scale(0.98);
+        }
+        .coupon i {
+            font-size: 3rem;
+            color: var(--accent-pink);
+            margin-bottom: 15px;
+            animation: heartbeat 1.5s infinite;
+        }
+        .coupon h3 {
+            color: #d68c9a; /* 稍微深一點的粉色 */
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .coupon p {
+            color: #888;
+            font-size: 1rem;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+            30% { transform: scale(1.1); }
+            40% { transform: scale(1); }
+            100% { transform: scale(1); }
         }
 
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            color: #aaa;
-            font-size: 0.85rem;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-10px);}
-            60% {transform: translateY(-5px);}
-        }
+        /* Footer */
+        footer { text-align: center; padding: 50px 20px; color: #aaa; font-size: 0.85rem; }
 
         @media (max-width: 600px) {
-            .hero h1 { font-size: 4rem; } /* 手機版字體調整 */
-            .timeline-item { padding: 20px; }
-            .countdown-box { padding: 15px 25px; gap: 15px; }
-            .time-unit span.number { font-size: 2rem; }
+            .hero h1 { font-size: 3.5rem; }
+            .info-grid { grid-template-columns: 1fr; }
+            .day-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .coupon { padding: 25px; }
         }
     </style>
 </head>
@@ -209,7 +258,7 @@
 
     <section class="hero">
         <h1>Okinawa & Us</h1>
-        <p>冬天去海邊，和喜歡的人。</p>
+        <p>1/15 - 1/19 冬日奢華食旅</p>
         
         <div class="countdown-box">
             <div class="time-unit">
@@ -225,95 +274,214 @@
                 <span class="label">Mins</span>
             </div>
         </div>
-        
-        <div class="scroll-down">
-            <i class="fas fa-chevron-down fa-2x"></i>
-        </div>
     </section>
 
     <div class="container">
-        <h2 class="section-title">我們的 5 天 4 夜</h2>
-
-        <div class="timeline-item">
-            <span class="day-tag">Day 1 | 降落 & 國際通</span>
-            <h3>✈️ 抵達與第一口沖繩味</h3>
-            <p>下飛機後先去取車。第一站直奔系滿魚市場吃海鮮，下午 Check-in 後去國際通逛逛，晚上一定要去「屋台村」感受氣氛！</p>
-            <div class="food-list">
-                <div><i class="fas fa-utensils"></i> 必吃：<b>豬肉蛋飯糰 (Pork Tamago)</b> - 機場店排隊太長就去市區吃</div>
-                <div style="margin-top:5px"><i class="fas fa-utensils"></i> 晚餐：<b>國際通屋台村</b> - 隨便挑一間居酒屋</div>
-            </div>
-            <div class="location"><i class="fas fa-map-marker-alt"></i> 那霸市區</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="day-tag">Day 2 | 北部看海</span>
-            <h3>🐋 湛藍的美麗海水族館</h3>
-            <p>一路向北開！早上先去水族館看巨大的鯨鯊，然後去古宇利島看海。冬天風大，我們可以在「心形岩」拍張照就躲進海景咖啡廳。</p>
-            <div class="food-list">
-                <div><i class="fas fa-utensils"></i> 午餐：<b>蝦蝦飯 (Shrimp Wagon)</b> - 古宇利島必吃</div>
-                <div style="margin-top:5px"><i class="fas fa-utensils"></i> 晚餐：<b>百年古家 大家</b> - 氣氛超好的阿古豬火鍋</div>
-            </div>
-            <div class="location"><i class="fas fa-map-marker-alt"></i> 本部町 / 今歸仁村</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="day-tag">Day 3 | 美國村 vibe</span>
-            <h3>🎡 像電影場景的美國村</h3>
-            <p>睡飽一點再出發。中午去美國村，這裡每一面牆都超好拍。找一間海邊咖啡廳看夕陽，晚上這裡的燈光超級浪漫。</p>
-            <div class="food-list">
-                <div><i class="fas fa-coffee"></i> 下午茶：<b>Zhyvago Coffee Works</b> - 海邊工業風咖啡</div>
-                <div style="margin-top:5px"><i class="fas fa-utensils"></i> 晚餐：<b>Blue Ocean Steak</b> 或 <b>A&W 漢堡</b></div>
-            </div>
-            <div class="location"><i class="fas fa-map-marker-alt"></i> 北谷町 (美國村)</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="day-tag">Day 4 | 瀨長島 & 購物</span>
-            <h3>🥞 純白的瀨長島與 Outlet</h3>
-            <p>號稱沖繩小希臘的「瀨長島」，全白的建築配海景。吃完舒芙蕾鬆餅後，去 Ashibinaa Outlet 爆買一波。</p>
-            <div class="food-list">
-                <div><i class="fas fa-utensils"></i> 甜點：<b>幸福鬆餅 (A Happy Pancake)</b> - 記得先預約！</div>
-                <div style="margin-top:5px"><i class="fas fa-shopping-bag"></i> 購物：<b>Ashibinaa Outlet</b> 或 <b>Parco City</b></div>
-            </div>
-            <div class="location"><i class="fas fa-map-marker-alt"></i> 豐見城市 / 浦添市</div>
-        </div>
-
-        <div class="timeline-item">
-            <span class="day-tag">Day 5 | 最後的悠閒</span>
-            <h3>🐈 奧武島擼貓 & 回家</h3>
-            <p>最後一天如果不趕時間，去南部的「奧武島」吃天婦羅，那裡有很多可愛的貓咪。還車前去超市買最後一波零食！</p>
-            <div class="food-list">
-                <div><i class="fas fa-utensils"></i> 小吃：<b>中本鮮魚天婦羅店</b></div>
-                <div style="margin-top:5px"><i class="fas fa-ice-cream"></i> 甜點：<b>Blue Seal 冰淇淋</b> - 臨走前再吃一支</div>
-            </div>
-            <div class="location"><i class="fas fa-map-marker-alt"></i> 南城市 -> 機場</div>
-        </div>
-
-        <h2 class="section-title" style="margin-top: 80px;">Travel Kit</h2>
         
-        <div class="timeline-item">
-            <h3>🎒 冬季沖繩穿搭 & 提醒</h3>
-            <ul style="list-style: none; margin-top: 15px; padding-left: 5px;">
-                <li style="margin-bottom:8px"><i class="fas fa-check" style="color:var(--primary-blue)"></i> <b>洋蔥式穿搭：</b> 白天20度很暖，早晚海風吹頭會痛，一定要帶防風外套/帽子。</li>
-                <li style="margin-bottom:8px"><i class="fas fa-check" style="color:var(--primary-blue)"></i> <b>自駕注意：</b> 記得帶台灣駕照 + 日文譯本。</li>
-                <li style="margin-bottom:8px"><i class="fas fa-check" style="color:var(--primary-blue)"></i> <b>保濕：</b> 雖然是海島，但冬天其實滿乾的。</li>
-            </ul>
+        <div class="info-card">
+            <h3><i class="fas fa-car-side"></i> 自駕攻略 & 交通資訊</h3>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>📝 取車提醒</h4>
+                    <p>1. 必帶：<b>台灣駕照正本</b> + <b>日文譯本</b> + <b>護照</b>。<br>2. 檢查：取車時跟店員錄影確認車身舊刮痕。<br>3. 導航：車機輸入 MapCode 或電話號碼最準。</p>
+                </div>
+                <div class="info-item">
+                    <h4>🚗 駕駛小撇步</h4>
+                    <p>1. <b>右駕靠左</b>：口訣「雨刷在左，方向燈在右」。<br>2. 禮讓：沖繩人開車很慢，不要急按喇叭。<br>3. 停車：務必停在收費停車場，不要亂停路邊。</p>
+                </div>
+            </div>
         </div>
 
-        <div class="coupon" onclick="alert('和好成功！立刻牽手 30 秒 ❤️')">
-            <i class="fas fa-heart" style="color: var(--accent-pink); font-size: 2.5rem; margin-bottom:10px;"></i>
-            <h3>無限期和好券</h3>
-            <p>旅行中難免有小摩擦，點擊這張券，我們可以無條件原諒對方一次。</p>
-            <small style="color:#999">(點擊兌換)</small>
+        <h2 class="section-title">5 Days Trip Itinerary</h2>
+
+        <div class="timeline-item">
+            <div class="day-header">
+                <span>Day 1 | 1/15 (四)</span>
+                <span style="font-size:0.9em; opacity:0.9;">那霸市區 & 頂級燒肉</span>
+            </div>
+            <div class="day-content">
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-plane-arrival"></i> 抵達 & 取車</div>
+                    <div class="desc">下飛機後搭乘接駁車前往租車公司。取車後直接導航飯店 Check-in。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-utensils"></i> 晚餐：Roins (ロインズ) 久茂地店</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-phone"></i> 098-943-9129</span>
+                        <span class="tag"><i class="far fa-clock"></i> 17:00 - 24:00</span>
+                        <span class="tag"><i class="fas fa-yen-sign"></i> 預算: ¥6000/人</span>
+                    </div>
+                    <div class="desc">非常有質感的燒肉店，裝潢像 Lounge Bar，肉質是頂級黑毛和牛，完全沒有炸物。</div>
+                    <div class="tip-box">💡 推薦：厚切牛舌、稀有部位拼盤。附近有收費停車場。</div>
+                </div>
+            </div>
+            <div class="backup-plan">
+                <span class="backup-icon">Plan B</span>
+                <div>如果 Roins 客滿，備案去 <b>燒肉 華 (Yakiniku Hana)</b> (電話: 098-866-1133)。</div>
+            </div>
         </div>
+
+        <div class="timeline-item">
+            <div class="day-header">
+                <span>Day 2 | 1/16 (五)</span>
+                <span style="font-size:0.9em; opacity:0.9;">北部賞鯨 & 百年古宅</span>
+            </div>
+            <div class="day-content">
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-ship"></i> 季節限定：座頭鯨賞鯨</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> 依船家集合點</span>
+                        <span class="tag"><i class="far fa-clock"></i> 09:00 場次</span>
+                    </div>
+                    <div class="desc">1-3月是沖繩賞鯨旺季，看到鯨魚機率高達 98%！記得半小時前吃暈船藥。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-utensils"></i> 午餐：百年古家 大家 (Ufuya)</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-phone"></i> 0980-53-0280</span>
+                        <span class="tag"><i class="fas fa-map"></i> MC: 206 745 056*82</span>
+                    </div>
+                    <div class="desc">擁有百年歷史的沖繩古宅，在瀑布旁享用「阿古豬涮涮鍋」，湯頭清甜。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-fish"></i> 美麗海水族館</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map"></i> MC: 553 075 797</span>
+                        <span class="tag"><i class="far fa-clock"></i> 08:30 - 18:30</span>
+                    </div>
+                    <div class="desc">冬天躲進室內看巨大的鯨鯊「黑潮之海」，非常療癒。</div>
+                    <div class="tip-box">💡 15:00 有餵食秀，可以看鯨鯊垂直進食的樣子。</div>
+                </div>
+            </div>
+            <div class="backup-plan">
+                <span class="backup-icon">Plan B</span>
+                <div>海況差船班取消 -> 改去 <b>名護鳳梨園</b> 或 <b>Orion 啤酒廠</b>。</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="day-header">
+                <span>Day 3 | 1/17 (六)</span>
+                <span style="font-size:0.9em; opacity:0.9;">藍洞潛水 & 美國村</span>
+            </div>
+            <div class="day-content">
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-water"></i> 青之洞窟 (Blue Cave)</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> 真榮田岬</span>
+                    </div>
+                    <div class="desc">冬天海水清澈，穿上厚防寒衣就不會冷。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-shopping-bag"></i> 美國村 (American Village)</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map"></i> MC: 33 526 450</span>
+                        <span class="tag"><i class="fas fa-parking"></i> 免費停車場</span>
+                    </div>
+                    <div class="desc">充滿異國風情，一定要走到海邊步道看夕陽。</div>
+                    <div class="tip-box">💡 推薦咖啡：Zhyvago Coffee Works。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-utensils"></i> 晚餐：琉球之牛 (北谷店)</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-phone"></i> 098-989-3405</span>
+                    </div>
+                    <div class="desc">傳說級的燒肉，肉質入口即化。一定要提前線上訂位！</div>
+                </div>
+            </div>
+            <div class="backup-plan">
+                <span class="backup-icon">Plan B</span>
+                <div>不能下水 -> 去 <b>琉球村</b> 體驗彩繪獅子，或 <b>讀谷燒</b> 買陶器。</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="day-header">
+                <span>Day 4 | 1/18 (日)</span>
+                <span style="font-size:0.9em; opacity:0.9;">瘋狂購物日 Shopping</span>
+            </div>
+            <div class="day-content">
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-store"></i> SAN-A Parco City</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map"></i> MC: 33 341 681</span>
+                    </div>
+                    <div class="desc">沖繩最新最大、沿海而建的 Mall。室內不怕風吹雨打。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-store-alt"></i> Ashibinaa Outlet</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map"></i> MC: 232 544 452</span>
+                    </div>
+                    <div class="desc">專買精品與運動品牌（Gucci, Coach, Adidas）。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-utensils"></i> 下午茶：幸福鬆餅</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map-marker-alt"></i> 瀨長島 Umikaji Terrace</span>
+                    </div>
+                    <div class="desc">在純白的階梯商場吃舒芙蕾鬆餅，看飛機起降。</div>
+                </div>
+            </div>
+            <div class="backup-plan">
+                <span class="backup-icon">Plan B</span>
+                <div>下大雨瀨長島不方便 -> 晚餐改去 Parco City 裡的 <b>敘敘苑燒肉</b> (景觀超好)。</div>
+            </div>
+        </div>
+
+        <div class="timeline-item">
+            <div class="day-header">
+                <span>Day 5 | 1/19 (一)</span>
+                <span style="font-size:0.9em; opacity:0.9;">免稅店 & 返台</span>
+            </div>
+            <div class="day-content">
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-gem"></i> DFS T Galleria 免稅店</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-map"></i> MC: 33 188 297</span>
+                    </div>
+                    <div class="desc">位於單軌電車「歌町站」，最後補貨精品。</div>
+                </div>
+
+                <div class="stop-item">
+                    <div class="stop-title"><i class="fas fa-utensils"></i> 午餐：Motobu 牧場 (那霸店)</div>
+                    <div class="tags">
+                        <span class="tag"><i class="fas fa-phone"></i> 098-943-3897</span>
+                    </div>
+                    <div class="desc">牧場直營的燒肉/牛排店，午間套餐 CP 值很高。</div>
+                </div>
+            </div>
+            <div class="backup-plan">
+                <span class="backup-icon">Plan B</span>
+                <div>最後時間如果不夠 -> 直接去機場附近的 <b>iias 沖繩豐崎</b>。</div>
+            </div>
+        </div>
+
+        <div class="coupon-section">
+            <h2 class="section-title">For Us</h2>
+            <div class="coupon" onclick="useCoupon()">
+                <i class="fas fa-heart"></i>
+                <h3>吵架和好券</h3>
+                <p>旅途中如果意見不合，<br>點擊這張券，無條件和好一次！(抱抱)</p>
+                <small style="color:#aaa; font-size:0.85rem; margin-top:10px; display:block;">(無限期有效 • 點擊兌換)</small>
+            </div>
+        </div>
+
     </div>
 
     <footer>
-        <p>Can't wait to see the blue with you. <br> 2026 Jan.</p>
+        <p>Made with ❤️ for our Winter Trip.<br>2026.01.15 - 01.19</p>
     </footer>
 
     <script>
-        // *** 請在這裡修改出發日期 ***
+        // 設定出發日期
         const tripDate = new Date("2026-01-15T00:00:00").getTime();
 
         const x = setInterval(function() {
@@ -330,9 +498,14 @@
 
             if (distance < 0) {
                 clearInterval(x);
-                document.querySelector(".countdown-box").innerHTML = "<h2 style='color:#fff'>我們在沖繩啦！🏖️</h2>";
+                document.querySelector(".countdown-box").innerHTML = "<h2 style='color:#fff'>出發囉！✈️</h2>";
             }
         }, 1000);
+
+        // 和好券功能
+        function useCoupon() {
+            alert("💖 兌換成功！\n\n請立刻轉頭給對方一個擁抱，\n並且說：「我們去吃好吃的吧！」\n\n(這張券不會過期喔！)");
+        }
     </script>
 </body>
 </html>
